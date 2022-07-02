@@ -10,5 +10,11 @@ export function TodoItem(props: TodoItemPropsInterface) {
     setItem((prev: TodoItemType) => ({...prev, isCanceled: !item.isCanceled}));
   };
 
-  return <TodoItemTemplate item={item} toggleItem={toggleItem} />;
+  return (
+    <TodoItemTemplate
+      item={item}
+      toggleItem={toggleItem}
+      cancel={props.cancel}
+    />
+  );
 }

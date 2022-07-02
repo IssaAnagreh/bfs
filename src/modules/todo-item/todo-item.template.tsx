@@ -11,13 +11,18 @@ export function TodoItemTemplate(props: TodoItemTemplatePropsInterface) {
       activeOpacity={0.8}
       onPress={props.toggleItem}
       style={styles.container}>
-      <View style={styles.radio}>
-        {props.item.isCanceled && <View style={styles.circle} />}
+      <View style={styles.leftContainer}>
+        <View style={styles.radio}>
+          {props.item.isCanceled && <View style={styles.circle} />}
+        </View>
+        <AppText
+          style={[styles.txt, props.item.isCanceled ? styles.txtStrike : {}]}>
+          {props.item.title}
+        </AppText>
       </View>
-      <AppText
-        style={[styles.txt, props.item.isCanceled ? styles.txtStrike : {}]}>
-        {props.item.title}
-      </AppText>
+      <TouchableOpacity onPress={() => props.cancel(props.item.key)}>
+        <AppText style={styles.cancel}>{'\u274C'}</AppText>
+      </TouchableOpacity>
     </TouchableOpacity>
   );
 }
@@ -30,6 +35,7 @@ const styles = StyleSheet.create({
     marginBottom: 5,
     flexDirection: 'row',
     alignItems: 'center',
+    justifyContent: 'space-between',
     padding: 20,
     marginHorizontal: 10,
     backgroundColor: 'white',
@@ -55,5 +61,12 @@ const styles = StyleSheet.create({
   },
   txtStrike: {
     textDecorationLine: 'line-through',
+  },
+  leftContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  cancel: {
+    fontSize: 10,
   },
 });

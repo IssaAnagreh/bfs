@@ -12,4 +12,8 @@ export type HomeActionType =
   | {
       type: 'CHANGE_TXT';
       payload: string;
+    }
+  | {
+      type: 'REMOVE_ITEM';
+      payload: number | string;
     };

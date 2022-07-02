@@ -6,6 +6,7 @@ export interface HomeTemplatePropsInterface {
   title: string;
   items: TodoItemType[];
   addItem: () => void;
+  cancelItem: (id: number | string) => void;
   changeTxt: (txt: string) => string;
   inputRef: ForwardedRef<TextInput | null>;
 }

@@ -1,4 +1,5 @@
 import React, {useContext, useEffect, useReducer, useRef} from 'react';
+import {LayoutAnimation} from 'react-native';
 import {TextInput} from 'react-native-gesture-handler';
 import {LocalizationContext} from '../../lib/contexts/localization/localization.context';
 import {HomeTemplate} from './home.template';
@@ -30,6 +31,14 @@ export function Home() {
     inputRef.current?.clear?.();
   };
 
+  const cancelItem = (id: number | string) => {
+    LayoutAnimation.easeInEaseOut();
+    dispatch({
+      type: 'REMOVE_ITEM',
+      payload: id,
+    });
+  };
+
   const changeTxt = (txt: string) => {
     dispatch({
       type: 'CHANGE_TXT',
@@ -43,6 +52,7 @@ export function Home() {
       title={t('app.title')}
       items={state.items}
       addItem={addItem}
+      cancelItem={cancelItem}
       changeTxt={changeTxt}
       inputRef={inputRef}
     />

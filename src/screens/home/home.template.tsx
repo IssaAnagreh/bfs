@@ -16,7 +16,7 @@ import {HomeTemplatePropsInterface} from './home.template.interface';
 
 export function HomeTemplate(props: HomeTemplatePropsInterface) {
   const renderItem = ({item}: {item: TodoItemType}) => {
-    return <TodoItem item={item} />;
+    return <TodoItem item={item} cancel={props.cancelItem} />;
   };
 
   return (
